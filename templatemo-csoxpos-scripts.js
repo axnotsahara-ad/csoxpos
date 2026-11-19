@@ -22,10 +22,14 @@ const mainFooter = document.getElementById('mainFooter');
 let isTransitioning = false;
 
 menuItems.forEach(item => {
-   item.addEventListener('click', () => {
+   item.addEventListener('click', (e) => {
       if (isTransitioning) return;
 
+      // Allow external page links (e.g., blog.html) to navigate normally
+      if (item.tagName === 'A' && item.href) return;
+
       const sectionId = item.dataset.section;
+      if (!sectionId) return;
       showSection(sectionId);
    });
 });

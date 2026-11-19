@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - CSOXPOS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="templatemo-csoxpos.css">
+    <style>
+        /* Blog specific styles */
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out 1s forwards;
+        }
+        .blog-header .logo {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+        }
+        .blog-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px var(--glow-cyan));
+        }
+        .blog-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 52px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, #ffffff 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+        }
+        .blog-header p.tagline {
+            font-size: 13px;
+            letter-spacing: 5px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
+        }
+        .back-home:hover {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 0 20px var(--glow-cyan);
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .blog-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        .blog-card-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.1);
+        }
+        .blog-card-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 14px;
+            background: rgba(0, 240, 255, 0.9);
+            color: #0a0a12;
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            z-index: 2;
+        }
+        .blog-card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card-date {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-family: 'Outfit', sans-serif;
+        }
+        .blog-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .blog-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .blog-card a.read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .blog-card a.read-more:hover {
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        .no-posts {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .no-posts h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+        @media (max-width: 992px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .blog-header h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="logo">
+            <img src="images/logo-csoxpos.svg" alt="CSOXPOS Logo">
+        </div>
+        <h1>CSOXPOS</h1>
+        <p class="tagline">Digital Excellence Redefined</p>
+    </header>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+
+    <!-- Blog Posts -->
+    <main class="blog-grid">
+        <!-- Post 1 -->
+        <article class="blog-card">
+            <div class="blog-card-image">
+                <span class="blog-card-category">Digital Strategy</span>
+                <img src="images/digital-strategy.jpg" alt="Blog Post 1">
+            </div>
+            <div class="blog-card-content">
+                <span class="blog-card-date">15 January 2026</span>
+                <h3>Starting Your Digital Journey in 2026</h3>
+                <p>A comprehensive guide to launching your digital presence with the right strategy, tools, and mindset for long-term success.</p>
+                <a href="#" class="read-more">Read more <span>→</span></a>
+            </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card">
+            <div class="blog-card-image">
+                <span class="blog-card-category">Design</span>
+                <img src="images/design-screen.jpg" alt="Blog Post 2">
+            </div>
+            <div class="blog-card-content">
+                <span class="blog-card-date">10 January 2026</span>
+                <h3>Why UI/UX Design Matters for Your Business</h3>
+                <p>Great design is not just about looks — it's about creating experiences that users love and that drive real business results.</p>
+                <a href="#" class="read-more">Read more <span>→</span></a>
+            </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card">
+            <div class="blog-card-image">
+                <span class="blog-card-category">Technology</span>
+                <img src="images/ai-optimized-templates.jpg" alt="Blog Post 3">
+            </div>
+            <div class="blog-card-content">
+                <span class="blog-card-date">5 January 2026</span>
+                <h3>AI Tools Every Developer Should Know in 2026</h3>
+                <p>From code generation to automated testing, explore the AI-powered tools reshaping modern software development.</p>
+                <a href="#" class="read-more">Read more <span>→</span></a>
+            </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-card">
+            <div class="blog-card-image">
+                <span class="blog-card-category">Development</span>
+                <img src="images/coding-screen.jpg" alt="Blog Post 4">
+            </div>
+            <div class="blog-card-content">
+                <span class="blog-card-date">28 December 2025</span>
+                <h3>Building Scalable Web Applications</h3>
+                <p>Best practices for architecting web applications that grow with your user base without compromising performance.</p>
+                <a href="#" class="read-more">Read more <span>→</span></a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: auto;">
+        <p>© 2026 CSOXPOS. Crafted with passion. Design by <a href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+    </footer>
+</body>
+</html>
