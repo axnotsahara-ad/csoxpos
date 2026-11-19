@@ -888,3 +888,245 @@ a {
 		opacity: 0.5;
 	}
 }
+/* ============ FAQ SECTION ============ */
+.faq {
+	background: var(--dark-1);
+}
+
+.faq-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	gap: 20px;
+}
+
+.faq-item {
+	background: var(--glass-bg);
+	border: 1px solid var(--glass-border);
+	border-radius: 20px;
+	overflow: hidden;
+	transition: var(--transition);
+	backdrop-filter: blur(20px);
+}
+
+.faq-item:hover {
+	border-color: rgba(0, 240, 255, 0.2);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.faq-question {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 25px;
+	cursor: pointer;
+	background: var(--dark-2);
+	border-bottom: 1px solid var(--glass-border);
+	transition: var(--transition);
+}
+
+.faq-question:hover {
+	background: rgba(0, 240, 255, 0.05);
+}
+
+.faq-question span:first-child {
+	font-family: 'Syne', sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-main);
+}
+
+.faq-toggle {
+	font-size: 20px;
+	color: var(--primary);
+	font-weight: 700;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: var(--transition);
+}
+
+.faq-answer {
+	padding: 0 25px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s ease, padding 0.4s ease;
+	background: var(--dark-1);
+}
+
+.faq-answer p {
+	color: var(--text-dim);
+	font-size: 14px;
+	line-height: 1.7;
+	margin: 0;
+	padding-bottom: 25px;
+}
+
+.faq-item.active .faq-answer {
+	max-height: 300px;
+	padding: 20px 25px 25px;
+}
+
+.faq-item.active .faq-toggle {
+	transform: rotate(45deg);
+}
+
+/* ============ NEWSLETTER SECTION ============ */
+.newsletter {
+	background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.newsletter-wrap {
+	max-width: 900px;
+	margin: 0 auto;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 30px;
+	padding: 60px 40px;
+	backdrop-filter: blur(20px);
+	text-align: center;
+	box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+.newsletter-content h2 {
+	color: #ffffff;
+	font-family: 'Syne', sans-serif;
+	font-size: 40px;
+	font-weight: 800;
+	margin-bottom: 16px;
+}
+
+.newsletter-content p {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 16px;
+	margin-bottom: 35px;
+}
+
+.newsletter-form {
+	display: flex;
+	gap: 15px;
+	max-width: 520px;
+	margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+	flex: 1;
+	padding: 18px 24px;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 50px;
+	color: #ffffff;
+	font-family: 'Outfit', sans-serif;
+	font-size: 15px;
+}
+
+.newsletter-form input[type="email"]::placeholder {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-form input[type="email"]:focus {
+	outline: none;
+	border-color: #ffffff;
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-form button {
+	padding: 18px 36px;
+	background: #ffffff;
+	color: #0a0a12;
+	font-family: 'Outfit', sans-serif;
+	font-weight: 700;
+	font-size: 15px;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: var(--transition);
+	border: none;
+}
+
+.newsletter-form button:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+/* ============ BACK TO TOP BUTTON ============ */
+.back-to-top {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 56px;
+	height: 56px;
+	background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+	color: #0a0a12;
+	border: none;
+	border-radius: 50%;
+	font-size: 24px;
+	font-weight: 700;
+	cursor: pointer;
+	z-index: 900;
+	opacity: 0;
+	visibility: hidden;
+	transition: var(--transition);
+	box-shadow: 0 10px 30px var(--glow-cyan);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.back-to-top.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.back-to-top:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 15px 40px var(--glow-magenta);
+}
+
+/* ============ EXTENDED RESPONSIVE ============ */
+@media (max-width: 992px) {
+	.faq-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.newsletter-wrap {
+		padding: 40px 25px;
+	}
+
+	.newsletter-content h2 {
+		font-size: 32px;
+	}
+
+	.newsletter-form {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.newsletter-form input[type="email"],
+	.newsletter-form button {
+		width: 100%;
+		max-width: 350px;
+	}
+}
+
+@media (max-width: 640px) {
+	.faq-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.newsletter-wrap {
+		padding: 30px 20px;
+	}
+
+	.newsletter-content h2 {
+		font-size: 28px;
+	}
+
+	.back-to-top {
+		width: 48px;
+		height: 48px;
+		font-size: 20px;
+		bottom: 20px;
+		right: 20px;
+	}
+}

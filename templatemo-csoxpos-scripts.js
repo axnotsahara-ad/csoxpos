@@ -99,3 +99,34 @@ function animateStats() {
 window.addEventListener('DOMContentLoaded', () => {
 	animateStats();
 });
+// ============ FAQ TOGGLE ============
+function toggleFaq(element) {
+	const faqItem = element.parentElement;
+	const isActive = faqItem.classList.contains('active');
+
+	document.querySelectorAll('.faq-item.active').forEach(item => {
+		item.classList.remove('active');
+	});
+
+	if (!isActive) {
+		faqItem.classList.add('active');
+	}
+}
+
+// ============ BACK TO TOP BUTTON ============
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 300) {
+		backToTopBtn.classList.add('show');
+	} else {
+		backToTopBtn.classList.remove('show');
+	}
+});
+
+backToTopBtn.addEventListener('click', () => {
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth'
+	});
+});
